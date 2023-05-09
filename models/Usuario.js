@@ -14,6 +14,20 @@ const UsuarioSchema = Schema({
         type: String,
         require: rue
     }
+},{
+    toJSON: {
+        virtuals: true
+    },
+    toObject: {
+        virtuals: true
+    }
 });
+
+UsuarioSchema.virtual('tareas', {
+    ref: 'Task',
+    localFiel: '_id',
+    foreignFiel: 'user',
+    justOne: false,
+})
 
 module.exports = model('Usuario', UsuarioSchema)

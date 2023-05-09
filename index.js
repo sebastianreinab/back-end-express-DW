@@ -28,9 +28,16 @@ app.use( express.json() );
 })
 */
 app.use('/api/auth', require('./routes/auth'))
+app.use('/api/task', require('./routes/task'))
+
+const Server = require('./Server/Server')
+
+const myServer = new Server();
+myServer.listen();
 
 
 //Escuchar en puerto 4000
 app.listen(4000, () => {
     console.log('Servidor corriendo en puerto ', process.env.PORT)
 })
+
